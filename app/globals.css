@@ -165,6 +165,20 @@ h1 {
   color: var(--muted);
 }
 
+.page a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.page a:hover {
+  color: #1d4ed8;
+}
+
+[data-theme="dark"] .page a {
+  color: #60a5fa;
+}
+
 @media (max-width: 480px) {
   .site-header {
     gap: 0.5rem;
