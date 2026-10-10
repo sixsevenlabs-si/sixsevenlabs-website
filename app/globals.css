@@ -3,6 +3,11 @@
   --fg: #111111;
   --muted: #6b6b6b;
   --border: #e6e6e6;
+  /* Status colors for data viz: the same in both themes, always paired with a text label. */
+  --good: #0ca30c;
+  --warn: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
   color-scheme: light;
 }
 
@@ -163,6 +168,177 @@ h1 {
 
 .muted {
   color: var(--muted);
+}
+
+h2 {
+  margin-top: 3rem;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* 2a */
+.nfa {
+  margin-top: 2rem;
+}
+
+.nfa-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.nfa-modes button {
+  padding: 0.375rem 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.nfa-modes button:hover {
+  color: var(--fg);
+}
+
+.nfa-modes button[aria-pressed="true"] {
+  border-color: var(--fg);
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.nfa-map {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.nfa-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nfa-map path,
+.nfa-map circle {
+  stroke: var(--bg);
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+  outline: none; /* the .on outline and tooltip show focus */
+  transition: fill 0.2s;
+}
+
+.nfa-map .on {
+  stroke: var(--fg);
+  stroke-width: 2;
+}
+
+.nfa-swatch {
+  display: inline-block;
+  flex: none;
+  width: 0.625rem;
+  height: 0.625rem;
+  margin-right: 0.5rem;
+  border-radius: 999px;
+}
+
+.nfa-tip {
+  position: absolute;
+  z-index: 1;
+  width: min(20rem, 100%);
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--bg);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  pointer-events: none;
+}
+
+.page .nfa-tip p {
+  margin-top: 0.25rem;
+  line-height: inherit;
+}
+
+.nfa-tip ul {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0.625rem 0;
+  padding: 0.625rem 0;
+  border-block: 1px solid var(--border);
+  list-style: none;
+}
+
+.nfa-tip li,
+.nfa-legend li,
+.nfa-level {
+  display: flex;
+  align-items: center;
+}
+
+.nfa-tip li span {
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.nfa-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1rem;
+  list-style: none;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.nfa-table {
+  margin-top: 2rem;
+}
+
+.nfa-table summary {
+  cursor: pointer;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.nfa-table summary:hover {
+  color: var(--fg);
+}
+
+.nfa-scroll {
+  margin-top: 1rem;
+  overflow-x: auto;
+}
+
+.nfa-table table {
+  min-width: 52rem;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.nfa-table th,
+.nfa-table td {
+  padding: 0.5rem 1rem 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.nfa-table td:has(.nfa-swatch) {
+  white-space: nowrap;
+}
+
+.nfa-table thead th {
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.page .nfa-foot {
+  font-size: 0.8125rem;
 }
 
 .page a {
