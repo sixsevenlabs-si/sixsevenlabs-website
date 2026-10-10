@@ -3,11 +3,12 @@
   --fg: #111111;
   --muted: #6b6b6b;
   --border: #e6e6e6;
-  /* Status colors for data viz: the same in both themes, always paired with a text label. */
-  --good: #0ca30c;
-  --warn: #fab219;
-  --serious: #ec835a;
-  --critical: #d03b3b;
+  /* Status colors for data viz, matched to the FFLSafe NFA map so the two read alike.
+     Same in both themes; always paired with a text label (light-mode fills sit under 3:1). */
+  --good: #5cb87a;
+  --warn: #f5cd4f;
+  --serious: #ec8a3c;
+  --critical: #c9433b;
   color-scheme: light;
 }
 
