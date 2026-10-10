@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildFigure, pose, project, GESTURE_PERIOD, type Range } from "./figure.ts";
+import { buildFigure, pose, project, BOTTOM_Y, GESTURE_PERIOD, type Range } from "./figure.ts";
 
 const fig = buildFigure();
 const at = (t: number, yaw = 0) => pose(fig, t, yaw, new Float32Array(fig.count * 3));
@@ -19,6 +19,8 @@ test("points are finite and land inside landscape, square and portrait canvases"
       for (const v of world) assert.ok(Number.isFinite(v));
       const s = project(world, w, h, new Float32Array(fig.count * 3));
       for (let i = 0; i < fig.count; i++) {
+        // DotFigure never draws torso points at or below the waist cut, so they may sit at the very edge.
+        if (i < fig.ranges.body[1] && world[i * 3 + 1] <= BOTTOM_Y) continue;
         assert.ok(s[i * 3] > 3 && s[i * 3] < w - 3, `x in range at yaw=${yaw} on ${w}x${h}`);
         assert.ok(s[i * 3 + 1] > 3 && s[i * 3 + 1] < h - 3, `y in range at yaw=${yaw} on ${w}x${h}`);
         assert.ok(s[i * 3 + 2] >= 0 && s[i * 3 + 2] <= 1);
