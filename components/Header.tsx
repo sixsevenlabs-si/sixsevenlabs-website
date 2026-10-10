@@ -11,6 +11,7 @@ export default function Header() {
       <nav className="site-nav" aria-label="Primary">
         <Link href="/fitness">Fitness</Link>
         <Link href="/motorsports">Motorsports</Link>
+        <Link href="/2a">2A</Link>
         <Link href="/about">About</Link>
       </nav>
       <ThemeToggle />
