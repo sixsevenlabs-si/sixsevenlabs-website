@@ -5,7 +5,7 @@ Alabama	Allowed	Registered only	Registered only	Allowed	Yes	SBRs and SBSs illega
 Alaska	Registered only	Registered only	Registered only	Allowed	Yes	Suppressors, SBRs and SBSs legal only if federally registered.
 Arizona	Registered only	Registered only	Registered only	Allowed	Yes	May be possessed if “in compliance with federal law.”
 Arkansas	Allowed	Allowed	Allowed	Allowed	No	No state NFA restriction.
-California	Banned	Banned	Banned	Banned	No	Banned: no civilian path for these items.
+California	Banned	Banned	Banned	Restricted	Yes	Banned: suppressors, SBRs and SBSs. Registered AOWs legal under PC 17710, except pen guns and assault-weapon configurations.
 Colorado	Registered only	Registered only	Registered only	Allowed	Yes	Suppressors, SBRs and SBSs require a “valid permit and license for possession.”
 Connecticut	Registered only	Restricted	Registered only	Restricted	Yes	Suppressors and SBSs legal if “licensed or otherwise permitted by federal or state law”. Most semi-auto SBRs are assault weapons.
 Delaware	Banned	Restricted	Banned	Restricted	No	Banned: suppressors and SBSs. Semi-auto SBRs are banned too.
