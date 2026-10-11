@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Claude desktop app worktrees (gitignored) carry their own .next output.
+    ".claude/**",
   ]),
 ]);
 
