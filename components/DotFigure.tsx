@@ -20,7 +20,7 @@ export default function DotFigure({ className }: { className?: string }) {
     const bodyEnd = fig.ranges.body[1];
     let w = 0, h = 0, raf = 0;
     let yaw = 0.5; // start on a three-quarter view
-    let dragging = false, lastX = 0, lastT = 0;
+    let dragging = false, lastX = 0, lastT = 0, dir = 1; // dir: auto-spin follows the last drag direction
     const start = performance.now();
 
     const resize = () => {
@@ -58,13 +58,13 @@ export default function DotFigure({ className }: { className?: string }) {
     const elapsed = () => (performance.now() - start) / 1000;
     const loop = () => {
       const t = elapsed();
-      if (!dragging) yaw += ((t - lastT) * 2 * Math.PI) / SPIN_PERIOD;
+      if (!dragging) yaw += (dir * (t - lastT) * 2 * Math.PI) / SPIN_PERIOD;
       lastT = t;
       draw(t);
       raf = requestAnimationFrame(loop);
     };
 
-    // Horizontal drag spins; auto-spin pauses while dragging.
+    // Horizontal drag spins; auto-spin pauses while dragging and resumes the way you last dragged.
     const onDown = (e: PointerEvent) => {
       dragging = true;
       lastX = e.clientX;
@@ -72,7 +72,9 @@ export default function DotFigure({ className }: { className?: string }) {
     };
     const onMove = (e: PointerEvent) => {
       if (!dragging) return;
-      yaw += (e.clientX - lastX) * DRAG_RAD_PER_PX;
+      const dx = e.clientX - lastX;
+      if (Math.abs(dx) > 1) dir = dx > 0 ? 1 : -1; // ignore sub-pixel jitter when the pointer lifts
+      yaw += dx * DRAG_RAD_PER_PX;
       lastX = e.clientX;
       if (reduceMotion) draw(elapsed());
     };
